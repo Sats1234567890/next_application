@@ -22,7 +22,6 @@ export default function Navbar() {
 
     const toggleMenu = useCallback(() => {
         setMenuOpen(prev => !prev);
-        // Close category dropdown when opening/closing main menu
         if (categoryOpen) setCategoryOpen(false);
     }, [categoryOpen]);
 
@@ -32,7 +31,6 @@ export default function Navbar() {
 
     const closeCategory = useCallback(() => {
         setCategoryOpen(false);
-        // Also close the mobile menu if category was opened from there
         setMenuOpen(false);
     }, []);
 
@@ -127,7 +125,6 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* Desktop Search Bar */}
                 <div className="hidden md:block w-60"> {/* Added w-60 to maintain width */}
                     <SearchBar
                         search={search}
@@ -138,7 +135,6 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Search Bar */}
             <div className="md:hidden px-4 pb-3">
                 <SearchBar
                     search={search}

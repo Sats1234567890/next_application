@@ -1,5 +1,6 @@
 import Navbar from '@/components/header';
 import HeroSection from '@/components/herosection';
+import Needs from '@/modules/components/needs';
 const heroImages = [
   { src: '/assets/slider/frame1.jpg', alt: 'Beautiful Landscape 1' },
   { src: '/assets/slider/frame2.jpg', alt: 'Cityscape at Night' },
@@ -17,6 +18,7 @@ export default function HomePage() {
         buttonText="Explore More"
         buttonLink="/about"
       />
+      <Needs/>
       
     </div>
   );
