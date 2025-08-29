@@ -14,11 +14,11 @@ interface ProductsSectionProps {
   products: Product[];
 }
 
-export default function ProductsSection({
+export const   ProductsSection=({
   title,
   description,
   products,
-}: ProductsSectionProps) {
+}: ProductsSectionProps)=> {
   return (
     <section className="bg-green-200 py-8 px-6 rounded-lg">
       <div className="text-center mb-6">
@@ -26,7 +26,6 @@ export default function ProductsSection({
         <p className=" text-gray-700 font-inter text-[29px] font-semibold leading-normal">{description} <span className="text-green-500">Wellness and Sustainibility</span></p>
       </div>
 
-      {/* Product Images */}
       <div className="flex flex-wrap justify-center gap-6">
         {products?.map((product, index) => (
           <div key={index} className="flex flex-col items-center">
@@ -47,3 +46,4 @@ export default function ProductsSection({
     </section>
   );
 }
+

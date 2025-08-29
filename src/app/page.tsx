@@ -3,6 +3,7 @@ import Navbar from '@/components/header';
 import HeroSection from '@/components/herosection';
 import Needs from '@/modules/components/needs';
 import Products from '@/modules/components/products/components/allproduct';
+import { ProductShowCase } from '@/modules/components/products/components/showcase';
 const sliderImages = [
   {
     src: "/assets/slider/frame1.jpg",
@@ -40,6 +41,7 @@ export default function HomePage() {
       />
       <Needs/>
       <Products/>
+      <ProductShowCase/>
       
     </div>
   );

@@ -1,4 +1,4 @@
-import ProductsSection from "./products";
+import { ProductsSection } from "./products";
 
 export default function Products() {
   const products = [

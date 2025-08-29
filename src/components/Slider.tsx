@@ -30,7 +30,7 @@ export default function HeroBackgroundSlider({ images, onSlideChange }) { // Add
   return (
     <div className="absolute inset-0 w-full h-full"> 
       <Slider {...settings}>
-        {images.map((image, index) => (
+        {images?.map((image, index) => (
           <div key={index} className="w-full h-[444px] relative">
             <Image
               src={image.src}
