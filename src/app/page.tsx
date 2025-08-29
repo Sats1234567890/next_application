@@ -1,10 +1,32 @@
+"use client";
 import Navbar from '@/components/header';
 import HeroSection from '@/components/herosection';
 import Needs from '@/modules/components/needs';
-const heroImages = [
-  { src: '/assets/slider/frame1.jpg', alt: 'Beautiful Landscape 1' },
-  { src: '/assets/slider/frame2.jpg', alt: 'Cityscape at Night' },
-  { src: '/assets/slider/frame1.jpg', alt: 'Mountain View' }, // Assuming you have a frame3.jpg now
+const sliderImages = [
+  {
+    src: "/assets/slider/frame1.jpg",
+    alt: "Beautiful Landscape 1",
+    title: "Explore the Wilderness",
+    description: "Discover breathtaking landscapes and untamed nature.",
+    buttonText: "Learn More",
+    buttonLink: "/wilderness",
+  },
+  {
+    src: "/assets/slider/frame2.jpg",
+    alt: "Cityscape at Night",
+    title: "Urban Adventures Await",
+    description: "Experience the vibrant energy of the city after dark.",
+    buttonText: "Discover Cities",
+    buttonLink: "/cities",
+  },
+  {
+    src: "/assets/slider/frame1.jpg",
+    alt: "Peaceful Beach",
+    title: "Relax by the Sea",
+    description: "Unwind on pristine beaches and enjoy the tranquility.",
+    buttonText: "Find Your Beach",
+    buttonLink: "/beaches",
+  },
 ];
 
 export default function HomePage() {
@@ -12,11 +34,8 @@ export default function HomePage() {
     <div>
       <Navbar/>
       <HeroSection
-        sliderImages={heroImages}
-        title="Sourced from the pure Himalayas for your health."
-        description="Nepal’s biodiversity is a treasure trove of medicinal and aromatic plants(MAPs), many of which are certified organic."
-        buttonText="Explore More"
-        buttonLink="/about"
+        sliderImages={sliderImages}
+        
       />
       <Needs/>
       

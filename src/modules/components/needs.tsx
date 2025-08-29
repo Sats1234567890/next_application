@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Needs() {
   return (
-    <section className="relative w-full max-w-[1280px] py-4 px-6 flex justify-center items-center">
+    <section className="relative w-full max-w-[1280px]  bg-[#EDF7EE] py-6 px-6 flex justify-center items-center">
       <div className="relative w-full h-screen max-w-[1280px]">
         <div className="absolute top-0 left-0 z-10">
           <WhyNeed />
