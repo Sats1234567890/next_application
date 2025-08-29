@@ -4,9 +4,8 @@ import Button from "@/components/global/button";
 
 export default function WhyNeed() {
   return (
-    <section className="w-full py-5 px-8">
+    <section className="w-full px-5">
       <div className="flex flex-col items-start gap-5 w-[422px]">
-        {/* Heading */}
         <h2 className="text-3xl font-bold text-gray-800">
           Why <span className="text-green-600">Choose Us</span>
         </h2>
