@@ -2,6 +2,7 @@
 import Navbar from '@/components/header';
 import HeroSection from '@/components/herosection';
 import Needs from '@/modules/components/needs';
+import Products from '@/modules/components/products/components/allproduct';
 const sliderImages = [
   {
     src: "/assets/slider/frame1.jpg",
@@ -38,6 +39,7 @@ export default function HomePage() {
         
       />
       <Needs/>
+      <Products/>
       
     </div>
   );
