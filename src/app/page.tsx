@@ -5,6 +5,7 @@ import Needs from '@/modules/components/needs';
 import Products from '@/modules/components/products/components/allproduct';
 import { ProductShowCase } from '@/modules/components/products/components/showcase';
 import {BestComponent} from '@/modules/components/best-sellers/best-seller';
+import { BlogSection } from '@/modules/components/articles/blog';
 const sliderImages = [
   {
     src: "/assets/slider/frame1.jpg",
@@ -44,6 +45,7 @@ export default function HomePage() {
       <Products/>
       <ProductShowCase/>
       <BestComponent/>
+      <BlogSection/>
       
     </div>
   );

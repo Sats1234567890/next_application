@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, { useEffect, useRef, useState } from 'react'; // Import useState
+import { CustomDots } from "@/modules/components/products/components/product-feature";
 
 export default function HeroBackgroundSlider({ images, onSlideChange }) { // Add onSlideChange prop
   const [currentSlide, setCurrentSlide] = useState(0); // Add state for current slide
@@ -103,3 +104,44 @@ export const ProductSlider = ({ children }) => {
     </div>
   );
 };
+
+
+
+export const BlogSlider = ({ children }) => {
+  const sliderRef = useRef(null);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    appendDots: dots => (
+      <CustomDots
+        dots={dots}
+        onNext={() => sliderRef.current.slickNext()}
+        onPrev={() => sliderRef.current.slickPrev()}
+      />
+    ),
+    customPaging: i => (
+      <Image
+        src="/assets/slider/dot.svg"
+        alt={`dot-${i}`}
+        width={16}
+        height={16}
+      />
+    ),
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
+    ],
+  };
+
+  return (
+    <Slider ref={sliderRef} {...settings}>
+      {children}
+    </Slider>
+  );
+};
+
