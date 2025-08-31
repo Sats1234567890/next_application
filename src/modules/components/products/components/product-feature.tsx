@@ -1,6 +1,6 @@
 import Button from "@/components/global/button";
 import Image from "next/image";
-
+import React from "react";
 export const ProductFeatureSection = ({ image, description, title, price }) => {
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col h-full overflow-hidden">
@@ -46,7 +46,7 @@ export const CustomDots = ({ dots, onNext, onPrev }) => (
     {/* Previous Arrow */}
     <button
       onClick={onPrev}
-      className="absolute left-[43%] top-1/2 -translate-y-1/2 cursor-pointer bg-green-500 hover:bg-green-600 rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+      className="absolute left-130 top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-3  transition-all duration-300 z-10"
       aria-label="Previous slide"
     >
       <Image
@@ -58,17 +58,17 @@ export const CustomDots = ({ dots, onNext, onPrev }) => (
       />
     </button>
 
-    {/* Dots */}
+    {/* Dots (limit to 3) */}
     <ul className="flex items-center space-x-2">
-      {dots.map((dot, index) => (
-        <li key={index}>{dot}</li>
+      {dots.slice(0, 3).map((dot, index) => (
+        <React.Fragment key={index}>{dot}</React.Fragment>
       ))}
     </ul>
 
     {/* Next Arrow */}
     <button
       onClick={onNext}
-      className="absolute right-[43%] top-1/2 -translate-y-1/2 cursor-pointer bg-green-500 hover:bg-green-600 rounded-full p-3 shadow-lg transition-all duration-300 z-10"
+      className="absolute right-130 top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-3  transition-all duration-300 z-10"
       aria-label="Next slide"
     >
       <Image
@@ -81,5 +81,7 @@ export const CustomDots = ({ dots, onNext, onPrev }) => (
     </button>
   </div>
 );
+
+
 
 

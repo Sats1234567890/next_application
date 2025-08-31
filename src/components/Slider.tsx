@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 import Slider from "react-slick";
+import dynamic from 'next/dynamic';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { useState } from 'react'; // Import useState
+import React, { useEffect, useRef, useState } from 'react'; // Import useState
 
 export default function HeroBackgroundSlider({ images, onSlideChange }) { // Add onSlideChange prop
   const [currentSlide, setCurrentSlide] = useState(0); // Add state for current slide
@@ -45,3 +46,60 @@ export default function HeroBackgroundSlider({ images, onSlideChange }) { // Add
     </div>
   );
 }
+
+
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
+
+
+
+
+
+
+export const ProductSlider = ({ children }) => {
+  const [rtlDirection, setRtlDirection] = useState(false); // Start LTR
+  const sliderRef = useRef(null);
+
+  const baseSettings = {
+    dots: false,
+    infinite: true,
+    speed: 4000, // Slower speed for smoother transition
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 0, // Continuous movement
+    cssEase: "linear",
+    arrows: false,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 3, speed: 3500 } },
+      { breakpoint: 768, settings: { slidesToShow: 2, speed: 3000 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, speed: 2500 } },
+    ]
+  };
+
+  // Combine base settings with dynamic rtl
+  const currentSettings = {
+    ...baseSettings,
+    rtl: rtlDirection,
+  };
+
+  // This effect will periodically toggle the direction
+  useEffect(() => {
+   
+    const interval = setInterval(() => {
+      setRtlDirection(prev => !prev);
+      // If you want to force a re-render of Slick for the new RTL setting:
+      // This is generally not ideal as it destroys and re-creates the slider.
+      // sliderRef.current.slickGoTo(0, true); // Go to start without animation
+    }, 10000); // Toggle direction every 10 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="slider-container">
+      <Slider ref={sliderRef} {...currentSettings}>
+        {children}
+      </Slider>
+    </div>
+  );
+};

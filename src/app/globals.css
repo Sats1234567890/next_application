@@ -52,6 +52,13 @@
 .slick-slider-custom .slick-next {
   right: -20px; /* Adjust distance from the right edge */
 }
+.slick-slide {
+  padding: 0 12px; /* 👈 horizontal gap */
+}
+
+.slick-list {
+  margin: 0 -12px; /* 👈 fixes overflow so slides align */
+}
 
 /* Hide slick's default arrows if you are using custom ones */
 .slick-slider .slick-prev::before,

@@ -2,7 +2,7 @@
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-import { ProductFeatureSection, NextArrow, PrevArrow, CustomDots } from "./product-feature";
+import { ProductFeatureSection, CustomDots } from "./product-feature";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -60,8 +60,7 @@ const settings = {
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
+  
   appendDots: dots => (
     <CustomDots
       dots={dots}
@@ -91,7 +90,7 @@ const settings = {
       <div>
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800">Our Product Features</h2>
-          <p className="text-gray-600 mt-2">
+          <p className="text-gray-700 font-inter text-[29px] font-semibold leading-normal">
             Discover Essential Herbs Product for{" "}
             <span className="text-green-500">Sustainability and Well-Being</span>
           </p>
