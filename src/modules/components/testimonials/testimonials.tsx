@@ -1,4 +1,4 @@
-import { BlogSlider } from "@/components/Slider";
+import {  TestimonialSlider } from "@/components/Slider";
 import { TestiMonialMessage } from "./message";
 
 export const Testimonials = () => {
@@ -42,7 +42,7 @@ export const Testimonials = () => {
                         Most Loved organic products chosen by <span className="text-green-600">Customers worldwide</span>
                     </p>
                 </div>
-                <BlogSlider>
+                <TestimonialSlider>
                     {testimonialData.map((testimonial, index) => (
                         <TestiMonialMessage
                             key={index}
@@ -53,7 +53,7 @@ export const Testimonials = () => {
                             avatar={testimonial.avatar}
                         />
                     ))}
-                </BlogSlider>
+                </TestimonialSlider>
             </div>
         </section>
     );

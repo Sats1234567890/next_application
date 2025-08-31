@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useState, useCallback } from "react";
 import { FaSearch, FaTimes, FaBars } from "react-icons/fa";
-import SearchBar from "./searchBar";
 import { navLinks } from "@/navdata";
 import React from "react";
+import InputField from "./searchBar";
 
 export default function Navbar() {
     const [search, setSearch] = useState("");
@@ -49,7 +49,6 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    {/* Hamburger for mobile */}
                     <button
                         className="md:hidden text-2xl text-gray-700 hover:text-green-600 transition-colors"
                         onClick={toggleMenu}
@@ -126,22 +125,24 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden md:block w-60"> {/* Added w-60 to maintain width */}
-                    <SearchBar
-                        search={search}
-                        onSearchChange={handleSearchChange}
-                        onClearSearch={clearSearch}
-                        placeholder="Search Product"
-                    />
+                    <InputField
+                        value={search}
+                        onChange={handleSearchChange}
+                        onClear={clearSearch}
+                        placeholder="Search..."
+                        type="search"
+                        icon={<FaSearch />} />
                 </div>
             </div>
 
             <div className="md:hidden px-4 pb-3">
-                <SearchBar
-                    search={search}
-                    onSearchChange={handleSearchChange}
-                    onClearSearch={clearSearch}
-                    placeholder="Search Product"
-                />
+                <InputField
+                    value={search}
+                    onChange={handleSearchChange}
+                    onClear={clearSearch}
+                    placeholder="Search..."
+                    type="search"
+                    icon={<FaSearch />} />
             </div>
         </nav>
     );

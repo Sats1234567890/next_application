@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export const ProductShowCase = () => {
+  const sliderRef = React.useRef<Slider>(null);
   const products = [
     {
       id: 1,
@@ -54,34 +55,28 @@ export const ProductShowCase = () => {
   ];
 
 
+const goNext = () => sliderRef.current?.slickNext();
+const goPrev = () => sliderRef.current?.slickPrev();
+
 const settings = {
   dots: true,
   infinite: true,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
-  
   appendDots: dots => (
     <CustomDots
       dots={dots}
-      onNext={() => sliderRef.current.slickNext()}
-      onPrev={() => sliderRef.current.slickPrev()}
+      onNext={goNext}
+      onPrev={goPrev}
     />
   ),
   customPaging: i => (
-    <Image
-      src="/assets/slider/dot.svg"
-      alt={`dot-${i}`}
-      width={16}
-      height={16}
-    />
+    <Image src="/assets/slider/dot.svg" alt={`dot-${i}`} width={16} height={16} />
   ),
-  responsive: [
-    { breakpoint: 1024, settings: { slidesToShow: 3 } },
-    { breakpoint: 768, settings: { slidesToShow: 2 } },
-    { breakpoint: 640, settings: { slidesToShow: 1 } },
-  ],
 };
+
+
 
 
 

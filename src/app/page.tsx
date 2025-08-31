@@ -7,6 +7,8 @@ import { ProductShowCase } from '@/modules/components/products/components/showca
 import {BestComponent} from '@/modules/components/best-sellers/best-seller';
 import { BlogSection } from '@/modules/components/articles/blog';
 import { Testimonials } from '@/modules/components/testimonials/testimonials';
+import { NewsLetter } from '@/modules/components/contact/contact';
+import {Footer} from '@/modules/components/footer/footer';
 const sliderImages = [
   {
     src: "/assets/slider/frame1.jpg",
@@ -48,6 +50,8 @@ export default function HomePage() {
       <BestComponent/>
       <BlogSection/>
       <Testimonials/>
+      <NewsLetter/>
+      <Footer/>
       
     </div>
   );

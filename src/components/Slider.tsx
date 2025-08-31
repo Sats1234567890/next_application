@@ -116,6 +116,44 @@ export const BlogSlider = ({ children }) => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    centerMode: false, // <-- important
+    appendDots: dots => (
+      <CustomDots
+        dots={dots}
+        onNext={() => sliderRef.current.slickNext()}
+        onPrev={() => sliderRef.current.slickPrev()}
+      />
+    ),
+    customPaging: i => (
+      <Image
+        src="/assets/slider/dot.svg"
+        alt={`dot-${i}`}
+        width={16}
+        height={16}
+      />
+    ),
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
+    ],
+  };
+
+  return (
+    <Slider ref={sliderRef} {...settings}>
+      {children}
+    </Slider>
+  );
+};
+export const TestimonialSlider= ({ children }) => {
+  const sliderRef = useRef(null);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
     centerMode: true, // <-- important
     centerPadding: "0px", // <-- space on sides of center card
     appendDots: dots => (

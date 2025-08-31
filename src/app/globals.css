@@ -50,14 +50,14 @@
 }
 
 .slick-slider-custom .slick-next {
-  right: -20px; /* Adjust distance from the right edge */
+  right: -20px; 
 }
 .slick-slide {
   padding: 0 12px; /* 👈 horizontal gap */
 }
 
 .slick-list {
-  margin: 0 -12px; /* 👈 fixes overflow so slides align */
+  margin: 0 -12px; 
 }
 .slick-center {
   transform: scale(1.3);
