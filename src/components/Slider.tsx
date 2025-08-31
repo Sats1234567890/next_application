@@ -116,6 +116,8 @@ export const BlogSlider = ({ children }) => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    centerMode: true, // <-- important
+    centerPadding: "0px", // <-- space on sides of center card
     appendDots: dots => (
       <CustomDots
         dots={dots}
@@ -144,4 +146,5 @@ export const BlogSlider = ({ children }) => {
     </Slider>
   );
 };
+
 

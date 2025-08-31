@@ -59,6 +59,13 @@
 .slick-list {
   margin: 0 -12px; /* 👈 fixes overflow so slides align */
 }
+.slick-center {
+  transform: scale(1.3);
+  padding: 15px;
+  border-radius: 2rem;       
+  transition: transform 0.3s  ease;
+}
+
 
 /* Hide slick's default arrows if you are using custom ones */
 .slick-slider .slick-prev::before,

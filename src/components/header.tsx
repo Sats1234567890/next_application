@@ -35,7 +35,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+        <nav className="fixed top-0 left-0 w-full max-w-[1280px] bg-white shadow-sm z-50">
             <div className="max-w-7xl mx-auto flex items-center justify-around px-4 py-3 md:px-6">
                 <div className="flex items-center flex-shrink-0 gap-3">
                     <Image
