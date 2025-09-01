@@ -72,7 +72,7 @@ const ProductForm = () => {
         <div className="text-gray-500 text-xs">
           This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
         </div>
-        <Button text="Send" type="submit" className="w-full py-2 px-4" />
+        <Button text="Send" type="submit" className=" w-1/3 py-2 px-4" />
       </form>
     </div>
   );

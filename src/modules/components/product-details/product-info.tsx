@@ -11,7 +11,7 @@ const ProductDetailCard = ({ product }) => {
   ];
 
   return (
-    <div className="rounded-lg  p-6 max-w-md mx-auto my-8">
+    <div className="rounded-lg  p-3 max-w-md mx-auto ">
       <h2 className="text-2xl font-bold mb-4 text-green-800">Product Details</h2>
 
       <ul className="space-y-2 ">

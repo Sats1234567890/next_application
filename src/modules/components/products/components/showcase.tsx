@@ -54,7 +54,7 @@ const settings = {
           {products.map((product) => (
             <div key={product.id} className="px-2">
               <ProductFeatureSection
-                image={product.image}
+                image={product.images[0]}
                 description={product.description}
                 title={product.title}
                 price={product.price}
