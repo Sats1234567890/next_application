@@ -6,7 +6,7 @@ export const Footer = () => {
   // Footer Data
   const footerData = {
     about: {
-      logo: "logo.svg", // replace with your logo path
+      logo: "/logo.svg", 
       text: "Bringing nature’s goodness to your doorstep & health with our premium organic products.",
     },
     socials: [

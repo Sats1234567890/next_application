@@ -19,6 +19,7 @@ export const   ProductsSection=({
   description,
   products,
 }: ProductsSectionProps)=> {
+
   return (
     <section className="bg-green-200 py-8 px-6 rounded-lg">
       <div className="text-center mb-6">

@@ -1,22 +1,19 @@
-import Button from "@/components/global/button";
+import Image from "next/image";
+import Link from "next/link";
 
-// Consistent card design with equal height and proper spacing
-export const BestSellerProduct = ({ image, title, description, status }) => {
+export const BestSellerProduct = ({ id, image, title, description, status }) => {
   return (
     <div className="flex flex-col bg-white rounded-xl shadow-md overflow-hidden h-full max-w-sm mx-auto">
-      {/* Image Section */}
-      <div className="relative w-full h-48">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
-        {status && (
-          <span className="absolute top-2 left-2 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full shadow">
-            {status}
-          </span>
-        )}
-      </div>
+      <Link href={`/products/${id}`}>
+        <p className="relative w-full h-48 block">
+          <Image src={image} alt={title} fill className="object-cover" />
+          {status && (
+            <span className="absolute top-2 left-2 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full shadow">
+              {status}
+            </span>
+          )}
+        </p>
+      </Link>
 
       {/* Content Section */}
       <div className="flex flex-col flex-grow p-4 text-center">
@@ -27,13 +24,13 @@ export const BestSellerProduct = ({ image, title, description, status }) => {
           {description}
         </p>
 
-        {/* CTA Button */}
+        {/* CTA Button linking to dynamic product page */}
         <div className="mt-auto">
-          <Button 
-            text="Shop now" 
-            href="/shop" 
-            className="w-full text-center px-4 py-2"
-          />
+          <Link href={`/products/${id}`}>
+            <p className="block w-full text-center bg-green-600 text-white font-semibold py-2 px-4 rounded hover:bg-green-700 transition">
+              Shop now
+            </p>
+          </Link>
         </div>
       </div>
     </div>

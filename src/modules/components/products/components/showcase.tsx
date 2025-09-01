@@ -6,53 +6,11 @@ import { ProductFeatureSection, CustomDots } from "./product-feature";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { products } from "@/productData";
 
 export const ProductShowCase = () => {
   const sliderRef = React.useRef<Slider>(null);
-  const products = [
-    {
-      id: 1,
-      image: "/assets/products/product1.jpg",
-      description: "Organic Herbs & Medicinal Plants",
-      title: "Holy Basil",
-      price: "NPR 300"
-    },
-    {
-      id: 2,
-      image: "/assets/products/product2.jpg",
-      description: "Organic Herbs & Medicinal Plants",
-      title: "Mandro",
-      price: "NPR 300"
-    },
-    {
-      id: 3,
-      image: "/assets/products/product2.jpg",
-      description: "Organic Herbs & Medicinal Plants",
-      title: "Neelamani",
-      price: "NPR 300"
-    },
-    {
-      id: 4,
-      image: "/assets/products/product3.jpg",
-      description: "Organic Herbs & Medicinal Plants",
-      title: "Aloevera",
-      price: "NPR 300"
-    },
-    {
-      id: 5,
-      image: "/assets/products/product4.jpg",
-      description: "Organic Herbs & Medicinal Plants",
-      title: "Turmeric",
-      price: "NPR 300"
-    },
-    {
-      id: 6,
-      image: "/assets/products/product5.jpg",
-      description: "Organic Herbs & Medicinal Plants",
-      title: "Ginger",
-      price: "NPR 300"
-    }
-  ];
+ 
 
 
 const goNext = () => sliderRef.current?.slickNext();
