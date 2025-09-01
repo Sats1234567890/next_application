@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter, FaEnvelope, FaPhoneAlt,
 
 export const Footer = () => {
   // Footer Data
-  const footerData = {
+    const footerData = {
     about: {
       logo: "/logo.svg", 
       text: "Bringing nature’s goodness to your doorstep & health with our premium organic products.",
