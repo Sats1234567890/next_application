@@ -25,6 +25,7 @@ export const Footer = () => {
   };
 
   return (
+    <>
     <footer className="bg-green-800 py-10">
       <section className="container mx-auto px-6">
         <div className="flex flex-wrap justify-between gap-10">
@@ -88,6 +89,38 @@ export const Footer = () => {
           </div>
         </div>
       </section>
+     
+
     </footer>
+    <section className="bg-gray-200 text-gray-900 py-4">
+  <div className="container mx-auto flex flex-col md:flex-row justify-center gap-5 align-center items-center px-4">
+    {/* Left: copyright */}
+    <div className="mb-4 md:mb-0 text-center md:text-left">
+      <p className="text-sm">&copy; 2025 Web Studio Nepal. All Rights Reserved.</p>
+    </div>
+
+    {/* Right: links */}
+    <div>
+      <ul className="flex flex-wrap justify-center md:justify-end gap-6 text-sm">
+        <li>
+          <a href="/privacy" className="hover:text-green-500 transition-colors">
+            Privacy Policy
+          </a>
+        </li>
+        <li>
+          <a href="/terms" className="hover:text-green-500 transition-colors">
+            Terms of Service
+          </a>
+        </li>
+        <li>
+          <a href="/cookies" className="hover:text-green-500 transition-colors">
+            Cookie Settings
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+</>
   );
 };
