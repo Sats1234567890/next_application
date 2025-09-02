@@ -4,6 +4,7 @@ import { FormLabel } from "@/components/global/label";
 import InputField from "@/components/searchBar";
 import React, { useState } from "react";
 import Image from "next/image";
+import DecorativeImage from "@/components/global/decorativeImage";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -125,14 +126,12 @@ export default function ContactForm() {
             className="w-1/3 mt-4"
           />
         </form>
-        {/* Right: Decorative Image(s) */}
         <div className="flex-1 flex items-center justify-center">
-          <Image
+          <DecorativeImage
             src="/assets/slider/contact1.png"
             alt="Contact Decorative"
             width={480}
             height={480}
-            className="object-contain"
           />
         </div>
       </div>

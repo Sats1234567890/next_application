@@ -46,8 +46,8 @@ export const navLinks = [
         ]
     },
     {
-        name: "Our Stories",
-        href: "/stories",
+        name: "About US",
+        href: "/about",
         type: "link"
     },
     {
