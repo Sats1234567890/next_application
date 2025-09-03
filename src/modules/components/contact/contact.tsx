@@ -4,8 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { CiStar } from "react-icons/ci";
 import { FaEnvelope, FaCheckCircle } from "react-icons/fa";
-import Button from "@/components/global/button";
 import InputField from "@/components/searchBar";
+import Button from "@/components/global/button";
 
 export const NewsLetter = () => {
   const [email, setEmail] = useState("");

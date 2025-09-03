@@ -6,6 +6,7 @@ import { FaSearch, FaTimes, FaBars } from "react-icons/fa";
 import { navLinks } from "@/navdata";
 import React from "react";
 import InputField from "./searchBar";
+import Link from "next/link";
 
 export default function Navbar() {
     const [search, setSearch] = useState("");
@@ -67,7 +68,7 @@ export default function Navbar() {
                             bg-white md:bg-transparent shadow-md md:shadow-none 
                             transition-all duration-300 ease-in-out px-4 md:px-0 py-4 md:py-0 z-40 justify-end`}
                     >
-                        {navLinks.map((link) => (
+                        {navLinks?.map((link) => (
                             <React.Fragment key={link.name}>
                                 {link.type === "link" && (
                                     <a
@@ -95,38 +96,73 @@ export default function Navbar() {
                                         {(openDropdown === link.name || (window.innerWidth >= 768 && link.dropdownType === "grid" && openDropdown === null)) && ( // Keep grid open on desktop hover
                                             <div
                                                 className={`absolute bg-white shadow-lg mt-2 z-30 border border-gray-100 rounded-md 
-                                                    ${link.dropdownType === "grid" 
-                                                        ? 'w-[calc(100vw-2rem)] md:w-auto min-w-[280px] lg:min-w-[900px] -left-[100px] md:left-1/2 md:-translate-x-1/2' 
+                                                    ${link.dropdownType === "grid"
+                                                        ? 'w-[calc(100vw-2rem)] md:w-auto min-w-[280px] lg:min-w-[900px] -left-[100px] md:left-1/2 md:-translate-x-1/2'
                                                         : 'w-48 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0' // Simple dropdown styling
                                                     }
                                                     ${openDropdown === link.name ? 'block' : 'hidden md:group-hover:block'}
                                                 `}
                                                 tabIndex={-1}
                                             >
-                                                {link.dropdownType === "grid" && link.sections && (
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-10 p-6 md:p-8">
-                                                        {link.sections.map((section, secIndex) => (
-                                                            <div key={secIndex}>
-                                                                <h3 className="font-bold text-gray-800 mb-3 pb-2 border-b-2 border-green-600 text-base">
-                                                                    {section.title}
-                                                                </h3>
-                                                                <ul className="space-y-2 text-sm text-gray-600 mt-4">
-                                                                    {section.links.map((item, itemIndex) => (
-                                                                        <li key={itemIndex}>
-                                                                            <a
-                                                                                href={item.href}
-                                                                                className="hover:text-green-600 transition-colors"
-                                                                                onClick={closeDropdownAndMenu}
-                                                                            >
-                                                                                {item.name}
-                                                                            </a>
-                                                                        </li>
-                                                                    ))}
-                                                                </ul>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                )}
+
+{link.dropdownType === "grid" && link.sections && (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-10 p-6 md:p-8">
+        {link.sections.map((section, secIndex) => (
+            <div key={secIndex}>
+                {/* Section title as Link */}
+                {section.href ? (
+                    <Link
+                        href={section.href}
+                        className="font-bold text-gray-800 mb-3 pb-2 border-b-2 border-green-600 text-base block hover:text-green-600 transition-colors"
+                        onClick={closeDropdownAndMenu}
+                    >
+                        {section.title}
+                    </Link>
+                ) : (
+                    <h3 className="font-bold text-gray-800 mb-3 pb-2 border-b-2 border-green-600 text-base">
+                        {section.title}
+                    </h3>
+                )}
+
+                {/* Render links if section has them */}
+                {section.links && (
+                    <ul className="space-y-2 text-sm text-gray-600 mt-4">
+                        {section.links.map((item, itemIndex) => (
+                            <li key={itemIndex}>
+                                <Link
+                                    href={item.href}
+                                    className="hover:text-green-600 transition-colors"
+                                    onClick={closeDropdownAndMenu}
+                                >
+                                    {item.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
+                {/* Render up to 4 products if section has them */}
+                {section.products && (
+                    <ul className="space-y-2 text-sm text-gray-600 mt-4">
+                        {section.products.slice(0, 4).map((product, prodIndex) => (
+                            <li key={prodIndex}>
+                                <Link
+                                    href={product.href}
+                                    className="hover:text-green-600 transition-colors"
+                                    onClick={closeDropdownAndMenu}
+                                >
+                                    {product.title}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        ))}
+    </div>
+)}
+
+
 
                                                 {link.dropdownType === "simple" && link.links && (
                                                     <ul className="py-2">
@@ -152,7 +188,7 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <div className="hidden md:block w-60"> 
+                <div className="hidden md:block w-60">
                     <InputField
                         value={search}
                         onChange={handleSearchChange}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
-import Button from './global/button';
 import HeroBackgroundSlider from './Slider';
+import Button from './global/button';
 export default function HeroSection({ sliderImages }) { 
   const [currentContent, setCurrentContent] = useState(sliderImages[0]); 
 
