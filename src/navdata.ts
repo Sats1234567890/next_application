@@ -128,4 +128,9 @@ export const navLinks = [
     href: "/contact",
     type: "link",
   },
+    {
+    name: "Articles",
+    href: "/articles",
+    type: "link",
+  },
 ];
