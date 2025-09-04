@@ -3,7 +3,7 @@ import Image from 'next/image';
 export const Articles = ({ image, date, title, description }) => {
   return (
     <div className="flex flex-col items-center "> 
-      <div className="bg-white rounded-xxl overflow-hidden w-full max-w-sm transition-transform hover:scale-105">
+      <div className="bg-white rounded-xxl overflow-hidden w-full transition-transform hover:scale-105">
         
         {/* Image */}
         <div className="relative w-full h-48">

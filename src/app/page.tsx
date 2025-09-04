@@ -1,4 +1,3 @@
-"use client";
 import Navbar from '@/components/header';
 import HeroSection from '@/components/herosection';
 import Needs from '@/modules/components/needs';

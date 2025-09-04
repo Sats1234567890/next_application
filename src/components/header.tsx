@@ -24,7 +24,6 @@ export default function Navbar() {
 
     const toggleMenu = useCallback(() => {
         setMenuOpen(prev => !prev);
-        // Close any open dropdown when the mobile menu is toggled
         setOpenDropdown(null);
     }, []);
 
@@ -98,7 +97,7 @@ export default function Navbar() {
                                                 className={`absolute bg-white shadow-lg mt-2 z-30 border border-gray-100 rounded-md 
                                                     ${link.dropdownType === "grid"
                                                         ? 'w-[calc(100vw-2rem)] md:w-auto min-w-[280px] lg:min-w-[900px] -left-[100px] md:left-1/2 md:-translate-x-1/2'
-                                                        : 'w-48 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0' // Simple dropdown styling
+                                                        : 'w-48 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0' 
                                                     }
                                                     ${openDropdown === link.name ? 'block' : 'hidden md:group-hover:block'}
                                                 `}
@@ -124,7 +123,6 @@ export default function Navbar() {
                     </h3>
                 )}
 
-                {/* Render links if section has them */}
                 {section.links && (
                     <ul className="space-y-2 text-sm text-gray-600 mt-4">
                         {section.links.map((item, itemIndex) => (
@@ -141,7 +139,6 @@ export default function Navbar() {
                     </ul>
                 )}
 
-                {/* Render up to 4 products if section has them */}
                 {section.products && (
                     <ul className="space-y-2 text-sm text-gray-600 mt-4">
                         {section.products.slice(0, 4).map((product, prodIndex) => (

@@ -34,7 +34,7 @@ export const Testimonials = () => {
     ];
 
     return (
-        <section className="py-12 bg-[#8ECD91]">
+        <section className="py-12 bg-[#8ECD91] overflow-hidden">
             <div className=" mx-auto px-3">
                 <div className="text-center mb-10">
                     <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Our Best Sellers</h2>

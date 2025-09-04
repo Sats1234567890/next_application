@@ -142,9 +142,9 @@ export const BlogSlider = ({ children }) => {
   };
 
   return (
-    <Slider ref={sliderRef} {...settings}>
+  <div className="overflow-hidden">  <Slider ref={sliderRef} {...settings}>
       {children}
-    </Slider>
+    </Slider></div>
   );
 };
 export const TestimonialSlider= ({ children }) => {
@@ -155,9 +155,8 @@ export const TestimonialSlider= ({ children }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1,
+   
     centerMode: true, // <-- important
-    centerPadding: "0px", // <-- space on sides of center card
     appendDots: dots => (
       <CustomDots
         dots={dots}

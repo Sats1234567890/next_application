@@ -1,20 +1,8 @@
 import Image from "next/image";
-
 export const TestiMonialMessage = ({ name, address, message, rating, avatar }) => {
-    const renderStars = () => {
-        const stars = [];
-        for (let i = 0; i < 5; i++) {
-            stars.push(
-                <span key={i} className={i < rating ? "text-orange-400" : "text-gray-300"}>
-                    &#9733;
-                </span>
-            );
-        }
-        return stars;
-    };
-
     return (
-        <div className="bg-gray-300 bg-opacity-70 rounded-2xl px-3 py-4 mx-3 flex flex-col items-center min-w-[280px] max-w-[340px] transition-transform duration-300 ease-in-out">
+        <div className="bg-gray-300 bg-opacity-70 rounded-2xl px-3 py-4 flex flex-col items-center min-w-[250px] max-w-[300px] flex-shrink-0 transition-transform duration-300 ease-in-out">
+            {/* Avatar & info */}
             <div className="flex items-center mb-4 w-full">
                 <Image
                     src={avatar}
@@ -29,7 +17,11 @@ export const TestiMonialMessage = ({ name, address, message, rating, avatar }) =
                 </div>
             </div>
             <p className="text-gray-800 italic mb-4 text-center">{message}</p>
-            <div className="flex justify-center">{renderStars()}</div>
+            <div className="flex justify-center">
+                {Array.from({ length: 5 }).map((_, i) => (
+                    <span key={i} className={i < rating ? "text-orange-400" : "text-gray-300"}>&#9733;</span>
+                ))}
+            </div>
         </div>
     );
 };

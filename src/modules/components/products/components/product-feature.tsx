@@ -42,11 +42,11 @@ export const ProductFeatureSection = ({ image, description, title, price }) => {
 
 
 export const CustomDots = ({ dots, onNext, onPrev }) => (
-  <div className="relative flex items-center justify-center mt-8">
+  <div className="relative flex items-center justify-center mt-8 overflow-visible">
     {/* Previous Arrow */}
     <button
       onClick={onPrev}
-      className="absolute left-130 top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-3  transition-all duration-300 z-10"
+      className="absolute left-[40%] top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 z-20"
       aria-label="Previous slide"
     >
       <Image
@@ -54,21 +54,20 @@ export const CustomDots = ({ dots, onNext, onPrev }) => (
         alt="Previous"
         width={32}
         height={32}
-        className="hover:opacity-80 transition-opacity"
       />
     </button>
 
-    {/* Dots (limit to 3) */}
+    {/* Dots */}
     <ul className="flex items-center space-x-2">
-      {dots.slice(0, 3).map((dot, index) => (
-        <React.Fragment key={index}>{dot}</React.Fragment>
+      {dots.map((dot, index) => (
+        <li key={index}>{dot}</li>
       ))}
     </ul>
 
     {/* Next Arrow */}
     <button
       onClick={onNext}
-      className="absolute right-130 top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-3  transition-all duration-300 z-10"
+      className="absolute right-[40%] top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 z-20"
       aria-label="Next slide"
     >
       <Image
@@ -76,11 +75,12 @@ export const CustomDots = ({ dots, onNext, onPrev }) => (
         alt="Next"
         width={32}
         height={32}
-        className="hover:opacity-80 transition-opacity"
       />
     </button>
   </div>
 );
+
+
 
 
 

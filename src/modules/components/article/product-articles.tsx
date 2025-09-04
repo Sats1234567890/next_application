@@ -3,19 +3,26 @@
 import { useState } from "react";
 import { data } from "@/features";
 import { ProductCard } from "./popular";
-import { CustomSlider } from "@/components/Slider";
 import { PopularArticles } from "./popular-articles";
 import Image from "next/image";
+import { Pagination } from "@/components/global/pagination";
 
 export const ProductArticles = () => {
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6; 
 
-  // Filter products based on search input
   const filteredProducts = data.filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Example popular articles data
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentProducts = filteredProducts.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
+
   const articles = [
     {
       id: 1,
@@ -39,38 +46,48 @@ export const ProductArticles = () => {
 
   return (
     <section className="p-4 flex gap-6 bg-[#EDF7EE]">
-     <div className="w-[75%]">
-  <h2 className="text-lg font-semibold mb-4">Popular Products</h2>
-  
-  <div className="flex flex-wrap gap-4">
-    {filteredProducts.map((product) => (
-      <div key={product.id} className="w-[calc(33.333%-1rem)]"> {/* 3 items per row with gap */}
-        <ProductCard
-          id={product.id}
-          title={product.title}
-          description={product.description}
-          image={product.image}
-          date={product.date}
-        />
+      <div className="w-[75%]">
+        <h2 className="text-lg font-semibold mb-4">Popular Products</h2>
+
+        {/* Product Cards */}
+        <div className="flex flex-wrap gap-4">
+          {currentProducts.map((product) => (
+            <div key={product.id} className="w-[calc(33.333%-1rem)]">
+              <ProductCard
+                id={product.id}
+                title={product.title}
+                description={product.description}
+                image={product.image}
+                date={product.date}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        )}
       </div>
-    ))}
-  </div>
-</div>
 
+      {/* Sidebar */}
+      <div className="w-[25%] py-10">
+        <div className="mb-4 relative w-full h-32">
+          <Image
+            src="/assets/slider/chino.png"
+            alt="Top"
+            fill
+            className="object-cover rounded-md"
+            priority
+          />
+        </div>
 
-      <div className="w-[25%]">
-  <div className="mb-4 relative w-full h-32">
-    <Image
-      src="/assets/slider/chino.png" 
-      alt="Top"
-      fill
-      className="object-cover rounded-md"
-      priority 
-    />
-  </div>
-
-  <PopularArticles articles={articles} />
-</div>
+        <PopularArticles articles={articles} />
+      </div>
     </section>
   );
 };

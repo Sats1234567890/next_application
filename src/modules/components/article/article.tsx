@@ -117,10 +117,7 @@ export const Article = () => {
         </div>
       </section>
 
-      {/* Products Section */}
-   {/* Products & Articles Section */}
 <section className="p-4 flex gap-6 bg-[#EDF7EE]">
-  {/* Left: Product Slider */}
   <div className="w-[75%]">
     <h2 className="text-lg font-semibold mb-4">Popular Products</h2>
     <CustomSlider slidesToShow={3} autoplaySpeed={1000}>
