@@ -41,12 +41,14 @@ export const ProductFeatureSection = ({ image, description, title, price }) => {
 };
 
 
+
+
 export const CustomDots = ({ dots, onNext, onPrev }) => (
   <div className="relative flex items-center justify-center mt-8 overflow-visible">
     {/* Previous Arrow */}
     <button
       onClick={onPrev}
-      className="absolute left-[40%] top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 z-20"
+      className="absolute left-4 sm:left-10 md:left-1/4 lg:left-[40%] top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 z-20"
       aria-label="Previous slide"
     >
       <Image
@@ -67,7 +69,7 @@ export const CustomDots = ({ dots, onNext, onPrev }) => (
     {/* Next Arrow */}
     <button
       onClick={onNext}
-      className="absolute right-[40%] top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 z-20"
+      className="absolute right-4 sm:right-10 md:right-1/4 lg:right-[40%] top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 z-20"
       aria-label="Next slide"
     >
       <Image
@@ -79,6 +81,8 @@ export const CustomDots = ({ dots, onNext, onPrev }) => (
     </button>
   </div>
 );
+
+
 
 
 

@@ -26,35 +26,30 @@ export const Support = () => {
       description: "Eco Friendly practices that respect nature.",
       bg: "bg-white",
     },
-    {
-      icon: <FaHeart className="text-green-700 text-2xl" />,
-      highlight: "1000+",
-      title: "Happy Customers",
-      description: "Trusted worldwide for purity and authenticity",
-      bg: "bg-green-200",
-      text: "text-green-900",
-    },
   ];
 
   return (
-    <section className="bg-[#e9f0f4] py-10 px-2 md:px-6">
+    <section className="bg-[#e9f0f4] py-10 px-3 sm:px-6">
       <div className="max-w-[1280px] mx-auto">
         {/* Heading */}
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 leading-snug">
           <FaGlobe className="inline text-blue-500 mr-2" />
-          Our Impact & <span className="text-green-600">Global</span> Reach Empowering Farmers <span className="text-green-600">in</span> Nepal.<br />
-          <span className="block mt-1">Serving Communities in worldwide</span>
+          Our Impact & <span className="text-green-600">Global</span> Reach Empowering Farmers{" "}
+          <span className="text-green-600">in</span> Nepal.
+          <br />
+          <span className="block mt-1 text-base sm:text-lg">Serving Communities worldwide</span>
         </h2>
+
         {/* Content */}
-        <div className="flex flex-col relative md:flex-row gap-6 items-stretch">
+        <div className="flex flex-col md:flex-row gap-6 items-stretch relative">
           {/* Left: Cards */}
           <div className="flex-1 flex flex-col md:flex-row gap-4">
             {/* Cards column */}
-            <div className="flex flex-col gap-4 flex-[1.2]">
-              {data.slice(0, 3).map((item, idx) => (
+            <div className="flex flex-col gap-4 flex-[1.2] w-full md:w-auto">
+              {data.map((item, idx) => (
                 <div
                   key={idx}
-                  className={`rounded-lg shadow ${item.bg} p-3 flex items-center gap-4 min-h-[110px] w-[370px]`}
+                  className={`rounded-lg shadow ${item.bg} p-3 flex items-center gap-4 min-h-[110px] w-full md:w-[370px]`}
                 >
                   <span>{item.icon}</span>
                   <div>
@@ -65,8 +60,9 @@ export const Support = () => {
                 </div>
               ))}
             </div>
-            {/* Happy Customers card with image below */}
-            <div className="flex flex-col flex-1 absolute left-100 justify-start w-[370px]">
+
+            {/* Happy Customers card with image */}
+            <div className="flex flex-col flex-1 w-full md:w-[370px] md:absolute md:left-[400px] md:top-0">
               <div className="rounded-lg shadow bg-green-200 p-3 flex items-center gap-4 min-h-[110px] mb-4 w-full">
                 <span><FaHeart className="text-green-700 text-2xl" /></span>
                 <div>
@@ -75,17 +71,19 @@ export const Support = () => {
                   <div className="text-green-900 text-sm">Trusted worldwide for purity and authenticity</div>
                 </div>
               </div>
-              <div className="flex justify-center">
-                <Image
-                  src="/assets/about/leaf.png" // Replace with your image path
-                  alt="Decorative Leaf"
-                  width={320}
-                  height={120}
-                  className="rounded-lg object-cover"
-                />
-              </div>
+              <div className="hidden lg:flex justify-center">
+  <Image
+    src="/assets/about/leaf.png"
+    alt="Decorative Leaf"
+    width={320}
+    height={120}
+    className="rounded-lg object-cover w-full max-w-[320px]"
+  />
+</div>
+
             </div>
           </div>
+
           {/* Right: Large Image */}
           <div className="flex-1 flex items-center justify-center">
             <DecorativeImage

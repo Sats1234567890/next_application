@@ -23,26 +23,37 @@ export const Marquee = () => {
     ...countries.map((src) => ({ type: "image", src })),
   ];
 
-  // Slider settings
   const settings = {
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     speed: 3000,
-    autoplaySpeed: 0, // continuous
+    autoplaySpeed: 0,
     cssEase: "linear",
     arrows: false,
     pauseOnHover: false,
-    rtl: true, 
+    rtl: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280, // xl+
+        settings: { slidesToShow: 5 },
+      },
+      {
+        breakpoint: 1024, // lg
+        settings: { slidesToShow: 4 },
+      },
+      {
+        breakpoint: 768, // md
         settings: { slidesToShow: 3 },
       },
       {
-        breakpoint: 640,
+        breakpoint: 640, // sm
         settings: { slidesToShow: 2 },
+      },
+      {
+        breakpoint: 480, // xs
+        settings: { slidesToShow: 1 },
       },
     ],
   };
@@ -54,20 +65,22 @@ export const Marquee = () => {
           {items.map((item, idx) => (
             <div
               key={idx}
-              className="relative flex flex-col justify-center items-center min-h-[100px] px-4"
+              className="relative flex flex-col justify-center items-center min-h-[120px] px-2 sm:px-4"
             >
               {item.type === "heading" ? (
-                <span className="absolute top-10 left-1/2 -translate-x-1/2 text-xl font-bold text-gray-800 whitespace-nowrap z-10">
+                <span className="text-center text-sm sm:text-lg md:text-xl font-bold text-gray-800 whitespace-nowrap mb-4 sm:mb-6">
                   {item.label}:
                 </span>
               ) : (
-                <Image
-                  src={item.src}
-                  alt="logo"
-                  width={140}
-                  height={90}
-                  className="object-contain rounded shadow"
-                />
+                <div className="flex justify-center items-center w-full h-full">
+                  <Image
+                    src={item.src}
+                    alt="logo"
+                    width={120}
+                    height={70}
+                    className="object-contain rounded shadow-sm sm:shadow-md"
+                  />
+                </div>
               )}
             </div>
           ))}

@@ -198,34 +198,30 @@ interface SliderProps {
 
 export const CustomSlider: React.FC<SliderProps> = ({
   children,
-  slidesToShow = 2,
-  slidesToScroll = 1,
-  className = "",
   autoplaySpeed = 3000,
 }) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000, 
-    slidesToShow,
-    slidesToScroll,
-    arrows: false, 
+    speed: 1000,
+    slidesToShow: 3,  // Default desktop
+    slidesToScroll: 1,
+    arrows: false,
     autoplay: true,
     autoplaySpeed,
-    cssEase: "ease", 
     pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1024, // Tablet
         settings: {
-          slidesToShow: Math.min(slidesToShow, 2),
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 640, // Mobile
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1,   // Only 1 slide
           slidesToScroll: 1,
         },
       },
@@ -234,5 +230,8 @@ export const CustomSlider: React.FC<SliderProps> = ({
 
   return <SliderLib {...settings}>{children}</SliderLib>;
 };
+
+
+
 
 

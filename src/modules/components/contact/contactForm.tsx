@@ -5,6 +5,15 @@ import InputField from "@/components/searchBar";
 import React, { useState } from "react";
 import Image from "next/image";
 import DecorativeImage from "@/components/global/decorativeImage";
+import { SelectField } from "@/components/global/select";
+
+const countries = [
+  { value: "np", label: "Nepal", dial: "+977", flag: "🇳🇵" },
+  { value: "in", label: "India", dial: "+91", flag: "🇮🇳" },
+  { value: "us", label: "USA", dial: "+1", flag: "🇺🇸" },
+  { value: "cn", label: "China", dial: "+86", flag: "🇨🇳" },
+  { value: "uk", label: "UK", dial: "+44", flag: "🇬🇧" },
+];
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -15,7 +24,9 @@ export default function ContactForm() {
     captcha: false,
   });
 
-  const handleChange = (e) => {
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type, checked } = e.target;
     setForm((prev) => ({
       ...prev,
@@ -23,14 +34,19 @@ export default function ContactForm() {
     }));
   };
 
-  const handleClear = (field) => {
+  const handleClear = (field: string) => {
     setForm((prev) => ({
       ...prev,
       [field]: "",
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const country = countries.find((c) => c.value === e.target.value);
+    if (country) setSelectedCountry(country);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
   };
@@ -42,10 +58,7 @@ export default function ContactForm() {
       </h2>
       <div className="flex flex-col md:flex-row gap-8 items-stretch">
         {/* Left: Form Fields */}
-        <form
-          onSubmit={handleSubmit}
-          className="flex-1"
-        >
+        <form onSubmit={handleSubmit} className="flex-1">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <FormLabel required>Name</FormLabel>
@@ -58,19 +71,33 @@ export default function ContactForm() {
                 showClear={!!form.name}
               />
             </div>
+
+            {/* Phone Section with Country Selector */}
             <div>
               <FormLabel required>Phone</FormLabel>
-              <InputField
-                value={form.phone}
-                onChange={handleChange}
-                onClear={() => handleClear("phone")}
-                placeholder="977-"
-                name="phone"
-                type="tel"
-                showClear={!!form.phone}
-                icon={<span role="img" aria-label="Nepal">🇳🇵</span>}
-              />
+              <div className="flex gap-2 items-center">
+                <div className="w-28">
+                  <SelectField
+                    value={selectedCountry.value}
+                    onChange={handleCountryChange}
+                    options={countries.map((c) => ({ value: c.value, label: `${c.flag} ${c.label}` }))}
+                    placeholder="Country"
+                  />
+                </div>
+                <InputField
+                  value={form.phone}
+                  onChange={handleChange}
+                  onClear={() => handleClear("phone")}
+                  placeholder={selectedCountry.dial}
+                  name="phone"
+                  type="tel"
+                  showClear={!!form.phone}
+                  icon={<span>{selectedCountry.flag}</span>}
+                  className="flex-1"
+                />
+              </div>
             </div>
+
             <div>
               <FormLabel required>Address</FormLabel>
               <InputField
@@ -96,37 +123,41 @@ export default function ContactForm() {
               />
             </div>
           </div>
+
           {/* Captcha */}
           <div className="mt-4">
-            <div className="flex  w-1/2 items-center gap-2 bg-gray-100 p-3 rounded border">
-              <input
-                type="checkbox"
-                id="captcha"
-                name="captcha"
-                checked={form.captcha}
-                onChange={handleChange}
-                className="w-5 h-5 accent-green-600 border-gray-300 rounded"
-                required
-              />
-              <label htmlFor="captcha" className="text-gray-700 select-none flex-1">
-                I'm Not a Robot
-              </label>
-              <Image
-                src="/assets/slider/image.png"
-                alt="captcha"
-                width={60}
-                height={30}
-                className="ml-2"
-              />
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 w-full bg-gray-100 p-3 rounded border">
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="captcha"
+                  name="captcha"
+                  checked={form.captcha}
+                  onChange={handleChange}
+                  className="w-5 h-5 accent-green-600 border-gray-300 rounded"
+                  required
+                />
+                <label htmlFor="captcha" className="text-gray-700 select-none">
+                  I'm Not a Robot
+                </label>
+              </div>
+              <div className="mt-2 sm:mt-0 flex-shrink-0">
+                <Image
+                  src="/assets/slider/image.png"
+                  alt="captcha"
+                  width={60}
+                  height={30}
+                  className="ml-0 sm:ml-2"
+                />
+              </div>
             </div>
           </div>
-          <Button
-            text="Send Message"
-            href="#"
-            className="w-1/3 mt-4"
-          />
+
+          <Button text="Send Message" href="#" className="w-full sm:w-1/3 mt-4" />
         </form>
-        <div className="flex-1 flex items-center justify-center">
+
+        {/* Right: Decorative Image */}
+        <div className="flex-1 flex items-center justify-center mt-6 md:mt-0">
           <DecorativeImage
             src="/assets/slider/contact1.png"
             alt="Contact Decorative"

@@ -10,7 +10,7 @@ import { Pagination } from "@/components/global/pagination";
 export const ProductArticles = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; 
+  const itemsPerPage = 6;
 
   const filteredProducts = data.filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase())
@@ -45,14 +45,18 @@ export const ProductArticles = () => {
   ];
 
   return (
-    <section className="p-4 flex gap-6 bg-[#EDF7EE]">
-      <div className="w-[75%]">
+    <section className="p-4 flex flex-col lg:flex-row gap-6 bg-[#EDF7EE]">
+      {/* Left: Products */}
+      <div className="lg:w-3/4 w-full">
         <h2 className="text-lg font-semibold mb-4">Popular Products</h2>
 
         {/* Product Cards */}
         <div className="flex flex-wrap gap-4">
           {currentProducts.map((product) => (
-            <div key={product.id} className="w-[calc(33.333%-1rem)]">
+            <div
+              key={product.id}
+              className="w-full sm:w-1/2 lg:w-[calc(33.333%-1rem)]"
+            >
               <ProductCard
                 id={product.id}
                 title={product.title}
@@ -74,8 +78,8 @@ export const ProductArticles = () => {
         )}
       </div>
 
-      {/* Sidebar */}
-      <div className="w-[25%] py-10">
+      {/* Right: Sidebar */}
+      <div className="lg:w-1/4 w-full mt-6 lg:mt-0">
         <div className="mb-4 relative w-full h-32">
           <Image
             src="/assets/slider/chino.png"

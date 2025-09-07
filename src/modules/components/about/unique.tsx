@@ -37,36 +37,35 @@ export const WhatMakeUnique = () => {
 
   return (
     <section>
-     {/* Changed height to h-[491px], adjusted py-8 for more vertical space efficiency */}
-     <div className="bg-[#B2DDB4] py-8 px-2 md:px-6 max-w-[1280px] mx-auto flex flex-col md:flex-row items-center gap-6 h-[491px]">
+      <div className="bg-[#B2DDB4] py-8 px-4 md:px-6 max-w-[1280px] mx-auto flex flex-col-reverse md:flex-row items-center gap-6 h-auto md:h-[491px]">
         {/* Left: Unique Points */}
-        {/* Adjusted padding and space-y for better fit */}
-        <div className="flex-1 pl-4 md:pl-10 h-full flex flex-col justify-center">
-          <h1 className="text-3xl font-bold mb-4 text-gray-800 whitespace-nowrap">
+        <div className="flex-1 w-full md:pl-10 flex flex-col justify-center">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800 whitespace-normal md:whitespace-nowrap text-center md:text-left">
             What Makes Us Unique (Chino Organica)
           </h1>
-          <ul className="space-y-4 list-inside"> {/* Reduced space-y */}
+          <ul className="space-y-4 list-inside">
             {data.map((item, idx) => (
               <li key={idx}>
-                <div className="flex items-center mb-0.5"> {/* Reduced mb */}
-                  <span className="font-bold text-lg text-gray-800">{item.title}</span> {/* Slightly reduced font size */}
-                  <span className="text-xl mr-1 p-0.5">{item.icon}</span> {/* Slightly reduced icon size and padding */}
+                <div className="flex items-center mb-1 gap-2">
+                  <span className="font-bold text-base sm:text-lg text-gray-800">{item.title}</span>
+                  <span className="text-lg sm:text-xl">{item.icon}</span>
                 </div>
-                <ul className="list-disc pl-7"> {/* Adjusted pl */}
-                  <li className="text-gray-900 text-sm">{item.description}</li> {/* Slightly reduced font size */}
+                <ul className="list-disc pl-6">
+                  <li className="text-gray-900 text-sm sm:text-base">{item.description}</li>
                 </ul>
               </li>
             ))}
           </ul>
         </div>
+
         {/* Right: Decorative Image */}
-        <div className="flex-1 flex items-center justify-center h-full p-4"> {/* Added p-4 for some breathing room */}
+        <div className="flex-1 flex items-center justify-center h-auto md:h-full p-2 md:p-4">
           <DecorativeImage
             src="/assets/about/cup.png"
             alt="Contact Decorative"
-            width={400} 
-            height={400} 
-            className="object-contain" 
+            width={300}
+            height={300}
+            className="object-contain w-[250px] sm:w-[300px] md:w-[400px]"
           />
         </div>
       </div>

@@ -1,7 +1,10 @@
 import Image from "next/image";
+
 export const TestiMonialMessage = ({ name, address, message, rating, avatar }) => {
     return (
-        <div className="bg-gray-300 bg-opacity-70 rounded-2xl px-3 py-4 flex flex-col items-center min-w-[250px] max-w-[300px] flex-shrink-0 transition-transform duration-300 ease-in-out">
+        <div className="bg-gray-300 bg-opacity-70 rounded-2xl px-3 py-4 flex flex-col items-center 
+                        w-full sm:w-[280px] md:w-[300px] lg:w-[340px] 
+                        flex-shrink-0 transition-transform duration-300 ease-in-out mx-auto">
             {/* Avatar & info */}
             <div className="flex items-center mb-4 w-full">
                 <Image
@@ -16,10 +19,14 @@ export const TestiMonialMessage = ({ name, address, message, rating, avatar }) =
                     <p className="text-sm text-gray-700">From {address}</p>
                 </div>
             </div>
+
             <p className="text-gray-800 italic mb-4 text-center">{message}</p>
+
             <div className="flex justify-center">
                 {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i} className={i < rating ? "text-orange-400" : "text-gray-300"}>&#9733;</span>
+                    <span key={i} className={i < rating ? "text-orange-400" : "text-gray-300"}>
+                        &#9733;
+                    </span>
                 ))}
             </div>
         </div>
